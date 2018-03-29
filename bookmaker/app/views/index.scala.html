@@ -1,0 +1,13 @@
+@() @main("Welcome to BookMaker") {
+<h1>あなただけのブックマークレット</h1>
+<div>
+	<ul>
+		<li><a href="@routes.ApplicationController.index">ユーザー登録 </a></li>
+		<li> <a href="@routes.LoginController.login">ログイン</a></li>
+	</ul>
+	
+	@if(flash.get("successmsg") != null){
+	<p>@flash.get("successmsg")</p>
+	}
+</div>
+}

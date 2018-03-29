@@ -1,0 +1,21 @@
+@() 
+
+@import helper._
+
+@* mainテンプレートにタイトル及びコンテンツを提供する *@
+@main("BookMaker"){
+<div>
+@form(CSRF(routes.BookMakerController.doInsert())) {
+  <input type="text" name="siteName" />
+  <input type="text" name="url" />
+  <input type="text" name="memo" />
+  <input type="text" name="image" />
+  <input type="submit" value="更新" />
+}
+	@if(flash.get("successmsg") != null){
+	<p>@flash.get("successmsg")</p>
+	}
+	
+</div>
+<a href="@routes.HomeController.index">TOP</a>
+}

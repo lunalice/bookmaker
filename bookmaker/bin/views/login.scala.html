@@ -1,0 +1,19 @@
+@() 
+
+@import helper._
+
+@* mainテンプレートにタイトル及びコンテンツを提供する *@
+@main("ログイン"){
+<h1>ログイン</h1>
+<div>
+@form(CSRF(routes.LoginController.doLogin())) {
+  <input type="text" name="userName" />
+  <input type="password" name="password" />
+  <input type="submit" value="login" />
+}
+	@if(flash.get("errormsg") != null){
+	<p>@flash.get("errormsg")</p>
+	}
+</div>
+<a href="@routes.HomeController.index">TOP</a>
+}

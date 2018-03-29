@@ -1,0 +1,20 @@
+@(userform: Form[Users]) 
+
+@import helper._
+
+@* mainテンプレートにタイトル及びコンテンツを提供する *@
+@main("ユーザー登録"){
+<h1>ユーザー登録</h1>
+<div>
+	@helper.form(routes.ApplicationController.doCreate) {
+	@CSRF.formField
+	@inputText(userform("userName"),'_label -> "ユーザー名")
+	@inputPassword(userform("password"),'_label -> "パスワード")
+	@inputText(userform("fullName"),'_label -> "フルネーム") 
+	<input type="submit" value="登録"> }
+	@if(flash.get("errormsg") != null){
+	<p>@flash.get("errormsg")</p>
+	}
+</div>
+<a href="@routes.HomeController.index">TOP</a>
+}
